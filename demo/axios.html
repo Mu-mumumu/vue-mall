@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../node_modules/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	</head>
+	<body>
+	<div id="app">
+		<button @click="get">get</button>
+		<button @click="post">post</button>
+		<div>{{msg}}</div>
+	</div>
+		
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				msg:''
+			},
+			methods:{
+				get:function(){
+					axios.get('../package.json',{
+						params:{
+							userId:'2'
+						},
+						headers:{
+							token:'fourwood'
+						}						
+					}).then(res=>{
+						this.msg=res.data
+					}).catch(function(err){
+						console.log(err)
+					})
+				},
+				post:function(){
+					axios.post('../package.json',{
+						userId:'3'
+					},{
+						headers:{
+						 'Content-Type': 'application/x-www-form-urlencoded'
+						}
+					}).then(res=>{
+						this.msg=res.data;
+					}).catch(function(err){
+						console.log(err)
+					})
+				}
+			}
+		})
+	</script>
+</html>
