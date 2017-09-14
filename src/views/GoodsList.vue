@@ -25,13 +25,30 @@
 		<!--menu-->
 		<div class="menu">
 			<div class="menu_item" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">
-				<span>全部分类</span>
-				<router-link to='./goods/phone'>手机和配件</router-link>
-				<router-link to='./goods/library'>动漫</router-link>
-				<router-link to='./goods/library'>服装馆</router-link>
-				<router-link to='./goods/library'>数码人生</router-link>
-				<router-link to='./goods/library'>电器城</router-link>
-				<router-link to='./goods/library'>图书馆</router-link>
+				<span>全部分类</span><!--
+			 --><router-link to='./goods/library'>动漫城</router-link><!--
+			 --><router-link to='./goods/library'>服装馆</router-link><!--
+			 --><router-link to='./goods/phone'>手机配件</router-link><!--
+			 --><router-link to='./goods/library'>数码人生</router-link><!--
+			 --><router-link to='./goods/library'>电器城</router-link><!--
+			 --><router-link to='./goods/library'>图书馆</router-link><!--
+			 --><router-link to='./goods/library'>生鲜场</router-link>
+			</div>
+			<div class="menu_view">
+				<ul v-bind:style="{marginLeft:screenWidth*0.1+'px'}">
+					<li><span><i class="fa fa-user-secret"></i></span><a href="">女装</a><p>/</p><a href="">男装</a><p>/</p><a href="">内衣</a></li>
+					<li><span><i class="fa fa-shopping-bag"></i></span><a href="">鞋靴</a><p>/</p><a href="">箱包</a><p>/</p><a href="">配件</a></li>
+					<li><span><i class="fa fa-headphones"></i></span><a href="">家电</a><p>/</p><a href="">数码</a><p>/</p><a href="">手机</a></li>
+					<li><span><i class="fa fa-diamond"></i></span><a href="">珠宝</a><p>/</p><a href="">眼镜</a><p>/</p><a href="">手表</a></li>
+					<li><span><i class="fa fa-soccer-ball-o"></i></span><a href="">运动</a><p>/</p><a href="">户外</a><p>/</p><a href="">乐器</a></li>
+					<li><span><i class="fa fa-gamepad"></i></span><a href="">游戏</a><p>/</p><a href="">动漫</a><p>/</p><a href="">影视</a></li>
+					<li><span><i class="fa fa-bed"></i></span><a href="">家具</a><p>/</p><a href="">家饰</a><p>/</p><a href="">家纺</a></li>
+					<li><span><i class="fa fa-car"></i></span><a href="">汽车</a><p>/</p><a href="">二手车</a><p>/</p><a href="">用品</a></li>
+					<li><span><i class="fa fa-home"></i></span><a href="">房产</a><p>/</p><a href="">装修</a><p>/</p><a href="">建材</a></li>
+					<li><span><i class="fa fa-tv"></i></span><a href="">办公</a><p>/</p><a href="">DIY</a><p>/</p><a href="">五金电子</a></li>
+					<li><span><i class="fa fa-book"></i></span><a href="">学习</a><p>/</p><a href="">卡券</a><p>/</p><a href="">本地服务</a></li>
+				</ul><!--
+			 --><carousel></carousel>
 			</div>
 		</div>
 		<com-footer></com-footer>
@@ -42,6 +59,7 @@
 	import ComHeader from '@/views/ComHeader'
 	import Carousel from '@/components/Carousel'
 	import ComFooter from '@/views/ComFooter'
+//	import Carousel from '@/components/Carousel'
 	export default{
 		data(){
 			return{
@@ -51,7 +69,8 @@
 		
 		components:{
 			ComHeader,
-			ComFooter
+			ComFooter,
+			Carousel
 		},
 		mounted (){
             const that = this

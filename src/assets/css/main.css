@@ -109,3 +109,137 @@ a.hl_sel{
 	color: #2A97D2;
 }
 /*main header end*/
+
+/*menu*/
+.menu_item{
+	height: 45px;
+	font:bold 18px/45px "微软雅黑" ;
+	color: #fff;
+	white-space: nowrap;
+}
+.menu_item span{
+	width: 230px;
+	height: 45px;
+	background-color: #396daf;
+	display: inline-block;
+	text-align: center;
+}
+.menu_item a{
+	/*margin-left:-5px;*/
+	width: 140px;
+	height: 45px;
+	display: inline-block;
+	background-color: #2A97D2;
+	cursor: pointer;
+	color:#fff;
+	text-decoration: none;
+	text-align: center;
+}
+.menu_item a:hover{
+	background-color:#396daf;
+}
+.menu_view{
+	width: 100%;
+	display: inline-block;
+}
+.menu_view ul{
+	width: 210px;
+	display: inline-block;
+	list-style: none;
+}
+.menu_view ul li{
+	width: 210px;
+	height: 30px;
+	padding: 0 10px;
+	background-color: #2A97D2;
+	line-height: 30px;
+}
+.menu_view ul li {
+	color:#ccc;
+}
+.menu_view ul li:hover{
+	color:#fff;
+	background-color: #396DAF;
+}
+.menu_view ul li span{
+	margin-right: 10px;
+}
+.menu_view ul li a{
+	color: #fff;
+	font: bold 16px "微软雅黑";
+	text-decoration: none;
+	margin-right:2px ;
+}
+.menu_view ul li a:hover{
+	text-decoration: underline;
+}
+.menu_view ul li p{
+	display: inline;
+	color: #fff;
+}
+/*menu end*/
+/*carousel*/
+.carousel-wrap{
+	position: relative;
+	height: 320px;
+	width: 640px;
+	overflow: hidden;
+	background-color: #fff;
+	/*border: 1px #000 solid;*/
+	display: inline-block;
+	vertical-align:top;
+	margin:10px 0 0 30px ;
+}
+.slide-ul {
+	width: 100%;
+	height: 100%;
+}
+.slide-ul li{
+    position: absolute;
+    width: 100%;
+    height: 100%;	
+}
+.carousel-items {
+	position: absolute;
+	z-index: 10;
+	top: 310px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 0;
+}
+.carousel-items span{
+    display: inline-block;
+    height: 6px;
+    width: 30px;
+    margin: 0 3px;
+    background-color: #b2b2b2;
+    cursor: pointer;	
+}
+.carousel-items .active{
+    background-color: rgba(0,0,255,0.6);	
+}
+.carousel-wrap ul li{
+	background-color: #fff;
+	width: 640px;
+	height: 320px;
+	padding: 0;
+}
+.list-enter-active {
+  transition: all 0.5s ease;
+  transform: translateX(0)
+}
+
+.list-leave-active {
+  transition: all 0.5s ease;
+  transform: translateX(-100%)
+}
+
+.list-enter {
+  transform: translateX(100%)
+}
+
+.list-leave {
+  transform: translateX(0)
+}
+/*carousel end*/
