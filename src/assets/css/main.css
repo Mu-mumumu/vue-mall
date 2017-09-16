@@ -141,6 +141,7 @@ a.hl_sel{
 .menu_view{
 	width: 100%;
 	display: inline-block;
+	background-color: rgb(245,245,245);	
 }
 .menu_view ul{
 	width: 210px;
@@ -243,3 +244,61 @@ a.hl_sel{
   transform: translateX(0)
 }
 /*carousel end*/
+/*main_right*/
+.main_right{
+	display: inline-block;
+	vertical-align:top;	
+	margin:10px 0 0 10px;
+}
+.main_right .advert{
+	height: 180px;
+}
+.main_right .advert img{
+	height: 180px;
+}
+
+.main_fee{
+	height: 140px;
+	width: 200px;
+}
+.main_fee a{
+	width: 45px;
+	height: 70px;
+	display: inline-block;
+}
+/*amin_right end*/
+/*recommend_content*/
+.recommend_content{
+	padding-top: 20px;
+	background-color: rgb(245,245,245);		
+}
+.recom_top{
+	padding-left: 10%;
+	background-color: rgb(245,245,245);	
+}
+.recommend_content .recom_title{
+	height: 40px;
+	width: 1212px;
+	/*margin: 0 0 0 10%;*/
+	border-bottom: 2px #6d55bd solid;
+	font:bold 20px/40px  "微软雅黑";
+}
+.recommend_content .recom_title h4{
+	text-align: center;
+	background:linear-gradient(to bottom right, #325bb5 , #6D55BD);	
+	color: #fff;
+	width: 230px;
+
+}
+.recom_body{
+	margin-left: 10%;	
+	width: 1212px;
+	font-size: 0;
+}
+.recom_body div{
+	border: 1px #000 solid;
+	width: 200px;
+	height: 220px;
+	display: inline-block;
+}
+/*recommend_content end*/

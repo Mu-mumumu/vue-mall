@@ -49,6 +49,54 @@
 					<li><span><i class="fa fa-book"></i></span><a href="">学习</a><p>/</p><a href="">卡券</a><p>/</p><a href="">本地服务</a></li>
 				</ul><!--
 			 --><carousel></carousel>
+			 	<div class="main_right">
+			 		<div class="advert"><img src="../../static/ad.png"/></div><!--	
+			 	--><div class="main_fee">
+			 			<a href=""><img src="../../static/hf.png"/></a><!--			 			
+			 		--><a href=""><img src="../../static/lx.png"/></a><!--	
+			 		--><a href=""><img src="../../static/cp.png"/></a><!--	
+			 		--><a href=""><img src="../../static/yx.png"/></a><!--	
+			 		--><a href=""><img src="../../static/jp.png"/></a><!--	
+			 		--><a href=""><img src="../../static/dyp.png"/></a><!--	
+			 		--><a href=""><img src="../../static/lc.png"/></a><!--	
+			 		--><a href=""><img src="../../static/jf.png"/></a>
+			 		</div>
+			 	</div>
+			</div>
+			<div class="recommend_content">
+				<div class="recom_top"><div class="recom_title"><h4>四条木精选</h4></div></div>
+				<div class="recom_body">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
 			</div>
 		</div>
 		<com-footer></com-footer>
