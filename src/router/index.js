@@ -7,7 +7,7 @@ import Image from '@/views/Image'
 import Cart from '@/views/Cart'
 
 Vue.use(Router)
-//const User = { template: '<div>Home</div>' }
+
 export default new Router({
 //	mode:'history',
   routes: [

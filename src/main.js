@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueLazyLoad from 'vue-lazyload'
 
 import './assets/css/main.css'
 import './assets/css/font-awesome.min.css'
 
-Vue.use(VueAwesomeSwiper)
+Vue.use(VueLazyLoad,{
+	loading:'/static/lazyload.png'
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

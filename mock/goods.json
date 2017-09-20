@@ -1,0 +1,53 @@
+{
+	"status":"0",
+	"result":[
+	    {
+	    	"goodsId":"00001",
+	    	"goodsName":"小米手机Max2 4G+64G 全网通4G大屏手机 金色",
+	    	"goodsPrice":"1699.00",
+	    	"goodsImg":"001.png"
+	    },
+	    {
+	    	"goodsId":"00002",
+	    	"goodsName":"Apple iPad MPGT2CH/A 9.7英寸 平板电脑（32G WLAN 金色）",
+	    	"goodsPrice":"2388.00",
+	    	"goodsImg":"002.png"
+	    },
+	    {
+	    	"goodsId":"00003",
+	    	"goodsName":"头戴式蓝牙耳机STN12插卡通话FM电脑手机平板通用型音乐耳机",
+	    	"goodsPrice":"69.90",
+	    	"goodsImg":"003.png"
+	    },
+	    {
+	    	"goodsId":"00004",
+	    	"goodsName":"猫咪老师短款睡衣",
+	    	"goodsPrice":"89.00",
+	    	"goodsImg":"004.png"
+	    },
+	    {
+	    	"goodsId":"00005",
+	    	"goodsName":"DACOM ATHLETE运动蓝牙耳机挂耳式跑步无线",
+	    	"goodsPrice":"129.00",
+	    	"goodsImg":"005.png"
+	    },
+	    {
+	    	"goodsId":"00006",
+	    	"goodsName":"新款潮女包欧美时尚女士包",
+	    	"goodsPrice":"379.00",
+	    	"goodsImg":"006.png"
+	    },
+	    {
+	    	"goodsId":"00007",
+	    	"goodsName":"徕卡 S2-P 70MM",
+	    	"goodsPrice":"11283.00",
+	    	"goodsImg":"007.png"
+	    },
+	    {
+	    	"goodsId":"00008",
+	    	"goodsName":"新款韩版潮单肩斜跨女士包",
+	    	"goodsPrice":"265.00",
+	    	"goodsImg":"008.png"
+	    }	    
+	]
+}

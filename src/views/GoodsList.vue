@@ -66,36 +66,13 @@
 			<div class="recommend_content">
 				<div class="recom_top"><div class="recom_title"><h4>四条木精选</h4></div></div>
 				<div class="recom_body">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
+					<div v-for="(item,index) in goodsList.list">
+						<img v-lazy="'/static/'+item.productImage"/>
+						<span>{{item.productName}}</span>
+						<br />
+						<span class="goods_price">￥{{item.salePrice}}</span><a href=''><i class="fa fa-cart-plus"></i></a>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -107,11 +84,12 @@
 	import ComHeader from '@/views/ComHeader'
 	import Carousel from '@/components/Carousel'
 	import ComFooter from '@/views/ComFooter'
-//	import Carousel from '@/components/Carousel'
+	import axios from 'axios'
 	export default{
 		data(){
 			return{
-				screenWidth: document.body.clientWidth
+				screenWidth: document.body.clientWidth,
+				goodsList:[]
 			}
 		},
 		
@@ -128,18 +106,23 @@
                     that.screenWidth = window.screenWidth
                 })()
             }
+            this.getGoodsList();
+            console.log(this.goodsList)
         },
 //      watch: {
 //          screenWidth(val) {
 //              this.screenWidth = val; 
 //          }
 //      },
-//		methods:{
-
-//		}
+		methods:{
+			getGoodsList(){
+				axios.get("/goods").then((result)=>{
+					var res = result.data;
+					this.goodsList = res.result;
+				})
+			}
+		}
 	}
 
 </script>
 
-<style>
-</style>
