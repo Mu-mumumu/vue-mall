@@ -1,9 +1,11 @@
 <template>
 	<div>
-		<com-header></com-header>
+		<com-header ref='com_header'></com-header>
 		<div class='main_header'>
-			<div id="logo_img" v-bind:style="{marginLeft:screenWidth*0.1+'px'}"></div>
-			<div class="main_search" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">
+			<!--<div id="logo_img" v-bind:style="{marginLeft:screenWidth*0.1+'px'}"></div>-->
+			<div id="logo_img"></div>
+			<!--<div class="main_search" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">-->
+			<div class="main_search">	
 				<div class="search_box">
 					<input type="" name="" id="" value="" placeholder="隐形蓝牙耳机    补水面膜"/>
 					<div id='search_btn'>搜索</div>
@@ -24,7 +26,8 @@
 		</div>
 		<!--menu-->
 		<div class="menu">
-			<div class="menu_item" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">
+			<!--<div class="menu_item" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">-->
+			<div class="menu_item">	
 				<span>全部分类</span><!--
 			 --><router-link to='./goods/library'>动漫城</router-link><!--
 			 --><router-link to='./goods/library'>服装馆</router-link><!--
@@ -35,7 +38,8 @@
 			 --><router-link to='./goods/library'>生鲜场</router-link>
 			</div>
 			<div class="menu_view">
-				<ul v-bind:style="{marginLeft:screenWidth*0.1+'px'}">
+				<!--<ul v-bind:style="{marginLeft:screenWidth*0.1+'px'}">-->
+				<ul>	
 					<li><span><i class="fa fa-user-secret"></i></span><a href="">女装</a><p>/</p><a href="">男装</a><p>/</p><a href="">内衣</a></li>
 					<li><span><i class="fa fa-shopping-bag"></i></span><a href="">鞋靴</a><p>/</p><a href="">箱包</a><p>/</p><a href="">配件</a></li>
 					<li><span><i class="fa fa-headphones"></i></span><a href="">家电</a><p>/</p><a href="">数码</a><p>/</p><a href="">手机</a></li>
@@ -63,20 +67,24 @@
 			 		</div>
 			 	</div>
 			</div>
-			<div class="recommend_content">
-				<div class="recom_top"><div class="recom_title"><h4>四条木精选</h4></div></div>
-				<div class="recom_body">
-					<div v-for="(item,index) in goodsList.list">
-						<img v-lazy="'/static/'+item.productImage"/>
-						<span>{{item.productName}}</span>
-						<br />
-						<span class="goods_price">￥{{item.salePrice}}</span><a href=''><i class="fa fa-cart-plus"></i></a>
-					</div>
-
+		</div>	
+		<div class="recommend_content">
+			<div class="recom_top"><div class="recom_title"><h4>四条木精选</h4></div></div>
+			<div class="recom_body">
+				<div v-for="(item,index) in goodsList">
+					<img v-lazy="'/static/'+item.productImage"/>
+					<span>{{item.productName}}</span>
+					<br />
+					<span class="goods_price">￥{{item.salePrice}}</span><a href='javascript:void(0)' @click="addCart(item.productId)" ><i class="fa fa-cart-plus"></i></a>
 				</div>
 			</div>
+				<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" class="loading">
+				 {{loading}}
+				</div>
 		</div>
+		
 		<com-footer></com-footer>
+
 	</div>
 </template>
 
@@ -89,7 +97,12 @@
 		data(){
 			return{
 				screenWidth: document.body.clientWidth,
-				goodsList:[]
+				goodsList:[],
+				login_model:false,
+				busy: true,
+				page:1,
+				pageSize:6,
+				loading:'加载中...'
 			}
 		},
 		
@@ -107,7 +120,6 @@
                 })()
             }
             this.getGoodsList();
-            console.log(this.goodsList)
         },
 //      watch: {
 //          screenWidth(val) {
@@ -115,12 +127,59 @@
 //          }
 //      },
 		methods:{
-			getGoodsList(){
-				axios.get("/goods").then((result)=>{
+			getGoodsList(ipage){
+				axios.get("/goods/list",{params:{page:this.page,pageSize:this.pageSize}}).then((result)=>{
 					var res = result.data;
-					this.goodsList = res.result;
+					console.log(res.result.list)
+					if(res.status=='0'){
+						if(ipage){
+//							console.log(this.goodsList)
+							this.goodsList = this.goodsList.concat(res.result.list);													
+							if(res.result.count=='0'){
+								this.busy = true
+								this.loading = '没有更多了'
+							}else{
+								this.busy = false								
+							}
+						}else{
+							this.goodsList = res.result.list
+							this.busy = false
+						}
+					}else{
+						this.goodsList = [] 
+					}
 				})
-			}
+			},
+			addCart(productId){
+				var uid=this.getCookie('userId')
+				axios.post("/goods/addCart",{
+					productId:productId,
+					userId:uid
+				}).then((res)=>{
+					var res=res.data;
+					if(res.status==0){
+						alert('加入购物车成功')
+					}
+					else{
+						this.$refs.com_header.loginModel()
+					}
+				})
+			},
+			getCookie(name){
+				var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+				if (arr = document.cookie.match(reg))
+					return (arr[2]);
+				else
+					return null;
+			},
+		    loadMore() {
+		      this.busy = true;
+		      this.page++;
+		      setTimeout(() => {		        
+		      	this.getGoodsList(true)
+//		        this.busy = false;
+		      }, 500);
+		    }			
 		}
 	}
 

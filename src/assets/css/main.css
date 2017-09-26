@@ -55,7 +55,9 @@ footer{
 /*main header*/
 .main_header{
 	height: 150px;
-	white-space:nowrap
+	white-space:nowrap;
+	width: 1212px;
+	margin: 0 auto;
 }
 #logo_img{
 	background:url(../../../static/logo.png) no-repeat #fff;
@@ -68,7 +70,7 @@ footer{
 .main_search{
 	display: inline-block;
 	width: 500px;
-
+	margin-left:100px ;
 }
 .search_box{
 	width: 100%;
@@ -111,6 +113,10 @@ a.hl_sel{
 /*main header end*/
 
 /*menu*/
+.menu{
+	width: 1212px;
+	margin: 0 auto;
+}
 .menu_item{
 	height: 45px;
 	font:bold 18px/45px "微软雅黑" ;
@@ -139,7 +145,7 @@ a.hl_sel{
 	background-color:#396daf;
 }
 .menu_view{
-	width: 100%;
+	width: 1212px;
 	display: inline-block;
 	background-color: rgb(245,245,245);	
 }
@@ -183,7 +189,7 @@ a.hl_sel{
 .carousel-wrap{
 	position: relative;
 	height: 320px;
-	width: 640px;
+	width: 755px;
 	overflow: hidden;
 	background-color: #fff;
 	/*border: 1px #000 solid;*/
@@ -271,9 +277,11 @@ a.hl_sel{
 .recommend_content{
 	padding-top: 20px;
 	background-color: rgb(245,245,245);		
+	width: 1212px;
+	margin: 0 auto;
 }
 .recom_top{
-	padding-left: 10%;
+	/*padding-left: 10%;*/
 	background-color: rgb(245,245,245);	
 }
 .recommend_content .recom_title{
@@ -291,7 +299,7 @@ a.hl_sel{
 
 }
 .recom_body{
-	margin-left: 10%;	
+	/*margin-left: 10%;*/	
 	width: 1212px;
 	font-size: 0;
 	background-color: #fff;
@@ -339,4 +347,109 @@ a.hl_sel{
 	height: 25px;
 	line-height: 25px;
 }
+.loading{
+	text-align: center;
+	background-color: #fff;
+}
 /*recommend_content end*/
+/*model start*/
+.model{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index:11;
+	background-color: rgba(0,0,0,0.3);
+}
+.model_content{
+	width: 500px;
+	height: 280px;
+	background:linear-gradient(to bottom right, rgba(0,183,255,0.9), #6D55BD);	
+	border-radius: 15px;
+	text-align: center;
+}
+.model_content h2{
+	color:#fff;
+
+	
+	text-shadow: 0px 3px 2px #aaa;
+	margin-top:30px ;
+	letter-spacing: 5px;
+}
+.m_userinfo{
+	margin-top: 50px;
+}
+.m_userinfo div{
+	margin-top:10px ;
+	position: relative;
+}
+.m_userinfo input{
+	width: 200px;
+	height: 30px;
+	background-color: inherit;
+	border: 1px #eee solid;
+	border-radius: 15px;
+	font-size: 16px;
+	text-indent: 1em;
+	color: #fff;
+}
+.m_userinfo input::-webkit-input-placeholder{
+	color: rgba(255,255,255,0.6);
+}
+.m_userinfo input::-moz-input-placeholder{
+	color: rgba(255,255,255,0.6);
+}
+.m_userinfo input::-ms-input-placeholder{
+	color: rgba(255,255,255,0.6);
+}
+.m_userinfo .errtip{
+	position: absolute;
+	right: 8px;
+	color: rgba(200,0,0,0.8);
+	font: bold 16px/30px "微软雅黑";
+}
+.model_btn{
+	width:200px ;
+	height: 35px;
+	text-align: center;
+	line-height: 100px;
+	margin: 0 auto;
+	color: #fff;
+	font: bold 18px/35px "微软雅黑";
+	border: #00B7FF 1px solid;
+	border-radius: 10px;
+	background-color: #00B7FF;
+	cursor: pointer;
+}
+
+.slide-bottom-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-bottom-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-bottom-fade-enter{
+  transform: translateY(-150px);
+  opacity: 0;
+}
+.slide-bottom-fade-leave-to{
+  transform: translateY(150px);
+  opacity: 0;	
+}
+.slide-right-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-right-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-right-fade-enter {
+  transform: translateX(-150px);
+  opacity: 0;
+}
+.slide-right-fade-leave-to{
+  transform: translateX(150px);
+  opacity: 0;	
+}
+/*model end*/

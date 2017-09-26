@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueLazyLoad from 'vue-lazyload'
+import infiniteScroll from 'vue-infinite-scroll'
 
 import './assets/css/main.css'
 import './assets/css/font-awesome.min.css'
 
+Vue.use(infiniteScroll)
 Vue.use(VueLazyLoad,{
 	loading:'/static/lazyload.png'
 })

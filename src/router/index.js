@@ -12,7 +12,7 @@ export default new Router({
 //	mode:'history',
   routes: [
     {
-      path: '/goods',
+      path: '',
       name: 'GoodsList',
       component: GoodsList,
       children:[
