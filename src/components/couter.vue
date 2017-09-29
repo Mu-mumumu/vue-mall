@@ -1,8 +1,8 @@
 <template>
-	<div>
-		<button v-on:click="addbtn()">+</button>
+	<div class="couter">
 		<button @click="decrease">-</button>
-		<p>{{num}}</p>
+		<input type="" name="goodsnum" id="goodsnum" value=""  v-model="num"/>
+		<button v-on:click="addbtn()">+</button>
 	</div>
 </template>
 
@@ -24,6 +24,10 @@
   	}
 }
 </script>
-
-<style>
+<style type="text/css">
+	.couter button{
+		background-color: #ddd;
+		width: 15px;
+		border-style: none;
+	}
 </style>

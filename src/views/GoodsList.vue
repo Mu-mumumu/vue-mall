@@ -167,6 +167,7 @@
 			},
 			getCookie(name){
 				var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+				console.log(document.cookie)
 				if (arr = document.cookie.match(reg))
 					return (arr[2]);
 				else

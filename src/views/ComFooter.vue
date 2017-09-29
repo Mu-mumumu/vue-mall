@@ -5,13 +5,7 @@
 		</div>
 		<div class="foot_bottom">
 			
-			<span>Copyright © 2017 IMooc All Rights Reserved.</span>
+			<span>Copyright © 2017 fourwoods All Rights Reserved.</span>
 		</div>
 	</footer>
 </template>
-
-<script>
-</script>
-
-<style>
-</style>

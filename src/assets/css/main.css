@@ -453,3 +453,167 @@ a.hl_sel{
   opacity: 0;	
 }
 /*model end*/
+
+/*cart start*/
+.cart_title {
+	width: 1088px;
+	margin:20px 10% 10px 10% ;
+	height:64px;
+	line-height: 64px;
+}
+.cart_title img{
+	width: 200px;
+	vertical-align:top;
+}
+.cart_title p{
+	display: inline-block;
+	font: 26px/60px '微软雅黑';
+	height: 64px;
+	vertical-align:top;
+	margin-left: 20px;
+	color:#666;
+}
+.cart_content_header{
+	width: 1088px;
+	margin:0px 10% 10px 10%;
+	border-top:4px solid #ccc ;
+}
+.cart_content_header>div{
+	display: inline-block;
+	/*padding: 0 5%;*/
+	width: 130px;
+	font-size: 14px;
+}
+.cart_content_header .cart_item,.cart_content_body .cart_good{
+	width: 432px;
+}
+.cart_content ul li>div>div>div.cart_checkbox{
+	width: 20px;
+	height: 20px;
+	border-radius:50% ;
+	border: 1px rgb(126,178,231) solid;
+}
+.cart_content ul li>div{
+	display: inline-block;
+	position: relative;
+}
+.cart_content ul li>div>div{
+	display: inline-block;
+	/*line-height: 169px;*/
+	/*vertical-align: middle;*/
+}
+.cart_content_body{
+	position: relative;
+	margin: 0px 10% 0 10%;
+	border: 1px #ccc solid;
+	
+}
+.cart_content_body div{
+	display: inline-block;
+	vertical-align: top;
+}
+.cart_content_body img{
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	position: absolute;
+	top:20%;
+	left: 22px;
+	
+}
+.cart_checkbox{
+	display: inline-block;
+	position: absolute;
+	left: 0px;
+	top:70px;
+}
+.cart_content .cart_goods{
+	height: 170px;
+	vertical-align: middle;
+	display:table-cell;	
+	width: 350px;
+}
+.cart_goods_span{
+	word-break: break-all;
+}
+.cart_f{
+	width: 130px;
+	height: 170px;
+	vertical-align: top;
+	position: relative;
+}
+.cart_price{
+	line-height: 170px;
+	width: 130px;
+}
+#goodsnum{
+	width: 24px;
+}
+.couter{
+	line-height: 170px;
+	width: 130px;
+}
+.cart_total{
+	width: 130px;
+	line-height: 170px;
+}
+.goods_delete{
+	width: 120px;	
+}
+.goods_delete span{
+	line-height: 170px;
+	cursor: pointer;	
+}
+.goods_delete span:hover{
+	color: #00B7FF;
+}
+/*cart end*/
+
+/*footer start*/
+.foot_bottom{
+	text-align: center;
+}
+/*footer end*/
+/*modal start*/
+.del_modal{
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	width:100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 11;
+}
+.del_modal>div{
+	border-radius: 10px;
+	border: 3px rgba(0,103,180,0.5) solid;
+	height: 250px;
+	width: 500px;
+	background-color:rgba(255,255,255,0.99) ;
+	position: relative;
+}
+.del_modal>div span{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 30px;
+	font:bold  18px/70px "微软雅黑";
+}
+.del_modal img{
+	width: 70px;
+	display: inline-block;
+}
+.info_warp{
+	position: absolute;
+	top: 60px;
+	left: 70px;
+	width: 350px;
+}
+.btn_warp{
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	border-top:1px #ccc  solid;
+}
+/*modal end*/

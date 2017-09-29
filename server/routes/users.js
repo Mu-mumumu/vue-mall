@@ -82,7 +82,7 @@ router.get('/checkLogin',function(req,res,next){
 router.get('/checkReg',function(req,res,next){
 	var param={
 		userName:req.query.userName
-	}	
+	}
 	User.findOne(param,function(err,doc){
 		if(err){
 			res.json({
@@ -164,4 +164,28 @@ router.post('/reg',function(req,res,next){
 		}
 	})
 })
+router.get('/cartList',function(req,res,next){
+	let uid=req.cookies.userId;
+	let param={
+		userId:uid
+	}
+	User.findOne(param,function(err,doc){
+		if(err){
+			res.json({
+				status:'1',
+				msg:err.message,
+				result:''
+			})
+		}else{
+			if(doc){
+				res.json({
+					status:'0',
+					msg:'',
+					result:doc.cartList
+				})
+			}
+		}
+	})
+})
+
 module.exports = router;
