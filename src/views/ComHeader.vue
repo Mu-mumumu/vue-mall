@@ -36,6 +36,8 @@
 				<div class="login_span" v-if="loginStatus">
 					<a href="javascript:void(0)" >{{name}}</a>
 					<a href="javascript:void(0)" @click="logout()">退出</a>
+					<router-link to='./cart' v-if='rout'><i class="fa fa-cart-plus"></i></router-link>
+					<router-link to='./' v-if='!rout'>返回</i></router-link>
 				</div>
 			</div>
 		</header>
@@ -62,6 +64,7 @@
 				regStatus:false
 			}
 		},
+		props: ['rout'],
 		methods:{
 			loginModel(){
 				this.login_model=true;

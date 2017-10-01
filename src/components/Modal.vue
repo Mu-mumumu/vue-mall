@@ -1,12 +1,17 @@
 <template>
-	<transition name="slide-bottom-fade">
+	<transition name="slide-fade">
 		<div class="del_modal">
 			<div>
 				<div class="info_warp">
-					<img src="../../static/l_modal.jpg"/>
-					<span>确定要从购物车删除吗？</span>
+					<slot name='imgModal'></slot>
+					<slot name='info'></slot>
 				</div>
-				<div class="btn_warp"></div>				
+				<div class="btn_warp">
+					<div class="btngroup">
+						<slot name='cancel'></slot>
+						<slot name='comfirm'></slot>					
+					</div>
+				</div>				
 			</div>
 		</div>
 	</transition>		

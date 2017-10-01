@@ -1,11 +1,17 @@
 <template>
 	<div>
-		<com-header ref='com_header'></com-header>
+		<modal v-if='tipModal'>
+			<img src="../../static/l_modall.png" slot="imgModal"/>
+			<span slot="info">加入购物车成功</span>
+			<button slot="cancel" @click="removeModal">继续购物</button>
+			<router-link to='./cart' class="btn_comf" slot="comfirm">查看购物车</router-link>
+		</modal>
+		<com-header ref='com_header' :rout="rout"></com-header>
 		<div class='main_header'>
 			<!--<div id="logo_img" v-bind:style="{marginLeft:screenWidth*0.1+'px'}"></div>-->
 			<div id="logo_img"></div>
 			<!--<div class="main_search" v-bind:style="{marginLeft:screenWidth*0.1+'px'}">-->
-			<div class="main_search">	
+			<div class="main_search">
 				<div class="search_box">
 					<input type="" name="" id="" value="" placeholder="隐形蓝牙耳机    补水面膜"/>
 					<div id='search_btn'>搜索</div>
@@ -92,6 +98,7 @@
 	import ComHeader from '@/views/ComHeader'
 	import Carousel from '@/components/Carousel'
 	import ComFooter from '@/views/ComFooter'
+	import Modal from '@/components/Modal'
 	import axios from 'axios'
 	export default{
 		data(){
@@ -102,14 +109,16 @@
 				busy: true,
 				page:1,
 				pageSize:6,
-				loading:'加载中...'
+				loading:'加载中...',
+				rout:true,
+				tipModal:false
 			}
 		},
-		
 		components:{
 			ComHeader,
 			ComFooter,
-			Carousel
+			Carousel,
+			Modal
 		},
 		mounted (){
             const that = this
@@ -158,7 +167,7 @@
 				}).then((res)=>{
 					var res=res.data;
 					if(res.status==0){
-						alert('加入购物车成功')
+						this.tipModal=true;
 					}
 					else{
 						this.$refs.com_header.loginModel()
@@ -180,7 +189,10 @@
 		      	this.getGoodsList(true)
 //		        this.busy = false;
 		      }, 500);
-		    }			
+		    },
+			removeModal(){
+				this.tipModal=false
+			}
 		}
 	}
 

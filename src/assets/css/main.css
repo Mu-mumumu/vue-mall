@@ -7,6 +7,7 @@
 	display: table;
 	content: '';
 }
+
 /*header start*/
 .com_head{
 	background-color: #f5f5f5;
@@ -346,6 +347,11 @@ a.hl_sel{
 	width: 25px;
 	height: 25px;
 	line-height: 25px;
+	transition: 0.3s;
+}
+.recom_body div a:hover{
+	color: #fff;
+	background-color:#6D55BD ;
 }
 .loading{
 	text-align: center;
@@ -478,6 +484,32 @@ a.hl_sel{
 	margin:0px 10% 10px 10%;
 	border-top:4px solid #ccc ;
 }
+.cart_img{
+	position: relative;
+	width: 130px;
+	height: 19px;
+}
+.cart_img>div{
+	width: 14px;
+	height: 14px;
+	border-radius:50% ;
+	border: 1px rgb(126,178,231) solid;
+	position: absolute;
+	top: 8px;
+	left: 5px;
+	cursor: pointer;
+}
+.cart_img div.selall{
+	width: 10px;
+	height: 10px;
+	border-radius:50% ;
+	border: 1px rgb(126,178,231) solid;
+	background-color: #00B7FF;
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	cursor: pointer;
+}
 .cart_content_header>div{
 	display: inline-block;
 	/*padding: 0 5%;*/
@@ -488,10 +520,21 @@ a.hl_sel{
 	width: 432px;
 }
 .cart_content ul li>div>div>div.cart_checkbox{
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 	border-radius:50% ;
 	border: 1px rgb(126,178,231) solid;
+	position: relative;
+	cursor: pointer;
+}
+.checked{
+	width: 14px;
+	height: 14px;
+	border-radius:50% ;
+	background-color: #00B7FF;
+	position: absolute;
+	top: 2px;
+	left: 2px;
 }
 .cart_content ul li>div{
 	display: inline-block;
@@ -524,7 +567,7 @@ a.hl_sel{
 .cart_checkbox{
 	display: inline-block;
 	position: absolute;
-	left: 0px;
+	left: 2px;
 	top:70px;
 }
 .cart_content .cart_goods{
@@ -567,6 +610,41 @@ a.hl_sel{
 .goods_delete span:hover{
 	color: #00B7FF;
 }
+.couter button{
+	background-color: #ddd;
+	width: 15px;
+	border-style: none;
+	width:19px;
+	height: 19px;
+}
+.couter input{
+	text-align: center;
+}
+.total_cart{
+	height: 50px;
+	background-color: #eee;
+	padding: 0 10%;
+}
+.total_cart div{
+	float: right;
+	height: 50px;
+	font: 14px/50px "arial black";
+	margin-right:70px ;
+}
+.total_cart button{
+	float: right;
+	border-style:none;
+	width: 150px;
+	height: 50px;
+	background-color: rgba(240,0,0,0.8);
+	color: #fff;
+	font: bold 18px "微软雅黑";
+	cursor: pointer;
+}
+.total_cart button a{
+	color: #fff;
+	text-decoration: none;	
+}
 /*cart end*/
 
 /*footer start*/
@@ -596,7 +674,7 @@ a.hl_sel{
 .del_modal>div span{
 	display: inline-block;
 	vertical-align: top;
-	margin-left: 30px;
+	margin-left: 50px;
 	font:bold  18px/70px "微软雅黑";
 }
 .del_modal img{
@@ -615,5 +693,59 @@ a.hl_sel{
 	position: absolute;
 	bottom: 0;
 	border-top:1px #ccc  solid;
+}
+.btngroup{
+	padding-left:20px;
+	margin-top: 10px;
+}
+.btn_warp button,.btn_warp a{
+	border-style: none;
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px #325BB5 solid;
+	width: 220px;
+	height: 35px;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.btn_warp a{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+}
+.btn_warp button.btn_comf{
+	background-color: #325BB5;
+	color: #fff;
+}
+.btn_warp a:hover{
+	border:1px #2A97D2 solid;
+	transition: 0.2s;
+	color: #6D55BD;
+}
+.btn_warp button.btn_comf:hover{
+	border:1px #2A97D2 solid;
+	color: #fff;
+}
+.btngroup button:active{
+	line-height: 30px;
+	transition: 0.2s;
+}
+.btngroup a:active{
+	line-height: 37px;
+	transition: 0.2s;	
+}
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter{
+  opacity: 0;
+}
+.slide-fade-leave-to{
+  opacity: 0;	
 }
 /*modal end*/
