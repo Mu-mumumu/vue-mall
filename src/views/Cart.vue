@@ -43,7 +43,7 @@
 				</li>
 			</ul>
 			<div class="total_cart">
-				<button><router-link to='./ss'>提交订单</router-link></button>
+				<button :class="{'btn_disable':selCount==0}" @click="cartSumit"><a >提交订单</a></button>
 				<div class="total_price">总价：{{totalPrice}}元</div>
 			</div>
 		</div>
@@ -67,7 +67,8 @@
 		    	num:'',
 		    	cartList:[],
 		    	rout:false,
-		    	delCart:false
+		    	delCart:false,
+		    	checkSumit:0
 		    }
 		 },
 		computed:{
@@ -156,7 +157,15 @@
 		  		axios.post('/users/selAll',{
 		  			selAll:sel
 		  		})
+		  	},
+		  	cartSumit(){
+		  		if(this.selCount>0){
+		  			this.$router.push({
+		  				path:'/address'
+		  			})
+		  		}
 		  	}
+		  	
 		},
 		mounted(){
 			this.init()

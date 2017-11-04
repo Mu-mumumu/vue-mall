@@ -462,8 +462,9 @@ a.hl_sel{
 
 /*cart start*/
 .cart_title {
+	position: relative;
 	width: 1088px;
-	margin:20px 10% 10px 10% ;
+	margin:20px auto 10px auto ;
 	height:64px;
 	line-height: 64px;
 }
@@ -479,9 +480,13 @@ a.hl_sel{
 	margin-left: 20px;
 	color:#666;
 }
-.cart_content_header{
+.cart_content>div,.cart_content>ul{
 	width: 1088px;
-	margin:0px 10% 10px 10%;
+	margin:0px  auto;
+	list-style: none;
+}
+.cart_content .cart_content_header{
+	margin-bottom: 10px;
 	border-top:4px solid #ccc ;
 }
 .cart_img{
@@ -519,7 +524,7 @@ a.hl_sel{
 .cart_content_header .cart_item,.cart_content_body .cart_good{
 	width: 432px;
 }
-.cart_content ul li>div>div>div.cart_checkbox{
+.cart_content .cart_checkbox{
 	width: 18px;
 	height: 18px;
 	border-radius:50% ;
@@ -547,7 +552,6 @@ a.hl_sel{
 }
 .cart_content_body{
 	position: relative;
-	margin: 0px 10% 0 10%;
 	border: 1px #ccc solid;
 	
 }
@@ -623,7 +627,6 @@ a.hl_sel{
 .total_cart{
 	height: 50px;
 	background-color: #eee;
-	padding: 0 10%;
 }
 .total_cart div{
 	float: right;
@@ -644,6 +647,9 @@ a.hl_sel{
 .total_cart button a{
 	color: #fff;
 	text-decoration: none;	
+}
+button.btn_disable{
+	background-color: rgba(63,63,63,0.8);	
 }
 /*cart end*/
 
@@ -749,3 +755,129 @@ a.hl_sel{
   opacity: 0;	
 }
 /*modal end*/
+
+/*order start*/
+.order_state{
+	width: 632px;
+	height: 25px;
+	background-color: #e4e4e4;
+	display: inline-block;
+	float: right;
+	list-style: none;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.order_state li{
+	width: 25%;
+	height: 25px;
+	float: left;
+	line-height: 24px;
+	text-align: center;
+	color: #666;
+	font:bold 16px "微软雅黑";
+	position: relative;
+}
+.order_state li:after{
+    position: absolute;
+    display: inline-block;
+    top: 4px;
+    left:150px;
+    width: 0;
+    height: 0px;
+    content: '';
+    border-style: solid;
+    border-width: 8px;
+    border-color: #e4e4e4;
+    transform: rotate(45deg);
+    box-shadow: 2px -2px 0px #fff;
+    z-index: 2;
+}
+li.step_cur{
+	background-color: #00B7FF;
+	color: #fff;
+}
+li.step_cur:after{
+    border-color: #00B7FF;	
+}
+.adr_title{
+	width: 1088px;
+	margin: 0 auto;
+	height: 30px;
+	color: #444;
+	font:bold 20px "微软雅黑";
+	border-bottom: solid 2px #AAAAAA;
+}
+.adrSel{
+	width: 1080px;
+	margin: 0 auto ;
+}
+.adrSel>div{
+	display: inline-block;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 10px 20px 10px 0;
+	width: 245px;
+	height: 150px;
+	background-color: #fff;
+	position: relative;
+	color: #666;
+	border: 2px solid #eee;
+	border-radius:5px ;
+	vertical-align: top;
+	cursor: pointer;
+}
+.adrSel>div p{
+	margin:10px 0;
+}
+.default_adr{
+	color: #00B7FF;
+}
+.del_adr{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	font-size: 20px;
+	cursor: pointer;
+}
+.del_adr:hover{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	cursor: pointer;
+	color: #00B7FF;
+}
+.adrSel>div:hover{
+	border: 2px solid rgba(42,151,210,0.5);
+}
+.adrSel>div.active{
+	border: 2px solid #00B7FF;	
+}
+.add_adr{
+	text-align: center;
+}
+.add_adr p{
+	font-size: 75px;
+}
+.showadr{
+	text-align: center;
+	cursor: pointer;
+	color: rgba(42,151,210,0.8);
+}
+.showadr:hover{
+	color: rgba(255,111,0,0.8);
+}
+.adr_hover{
+	color: rgba(255,111,0,0.8);	
+}
+.default_setadr{
+	display: none;
+}
+.default_setaddr{
+	display: block;
+	color: rgba(42,151,210,0.8);
+}
+.default_setadr:hover{
+	color: rgba(255,111,0,0.8);	
+}

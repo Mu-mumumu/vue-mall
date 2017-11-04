@@ -22,7 +22,7 @@ router.get("/list", function (req,res,next) {
 	let page=parseInt(req.param("page"))
 	let pageSize=parseInt(req.param("pageSize"))
 	let skip=(page-1)*pageSize
-	let goodsModel=Goods.find({}).skip(skip).limit(pageSize)
+	let goodsModel=Goods.find({}).sort({'productId':1}).skip(skip).limit(pageSize)
 	goodsModel.exec(function (err,doc) {
         if(err){
          	res.json({

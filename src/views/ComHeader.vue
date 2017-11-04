@@ -38,6 +38,7 @@
 					<a href="javascript:void(0)" @click="logout()">退出</a>
 					<router-link to='./cart' v-if='rout'><i class="fa fa-cart-plus"></i></router-link>
 					<router-link to='./' v-if='!rout'>返回</i></router-link>
+					<router-link to='./cart' v-if='toCart'>返回购物车</i></router-link>
 				</div>
 			</div>
 		</header>
@@ -64,7 +65,7 @@
 				regStatus:false
 			}
 		},
-		props: ['rout'],
+		props: ['rout','toCart'],
 		methods:{
 			loginModel(){
 				this.login_model=true;
