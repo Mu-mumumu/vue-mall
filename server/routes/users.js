@@ -358,4 +358,41 @@ router.post("/delAddress", function (req,res,next) {
   });
 });
 
+router.post("/addAddress",function(req,res,next){
+	var addrInfo={
+		addressId:req.body.addId,
+		userName:req.body.addName,
+		streetName:req.body.addStreet,
+		postCode:req.body.addCode,
+		tel:req.body.addTel,
+		isDefault:false
+	}
+	let userId=req.cookies.userId;
+	User.findOne({userId:userId},function(err,doc){
+    if(err){
+      res.json({
+        status:"1",
+        msg:err.message,
+        result:''
+      });
+    }else{
+    	doc.addressList.push(addrInfo)    	
+    	doc.save(function(err1,doc1){
+    		if(err1){
+    			res.json({
+  		      status:"1",
+   			    msg:err1.message,
+    		    result:''    				
+    			})
+    		}else{
+    			res.json({
+	          status:"0",
+	          msg:'',
+	          result:''  		
+	        }) 
+    		}
+    	})
+    }
+	})
+})
 module.exports = router;

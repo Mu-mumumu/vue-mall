@@ -1,5 +1,31 @@
 <template>
 	<div>
+		<modal v-if="delAdr">
+			<img src="../../static/modal.jpg" slot="imgModal" />
+			<span slot="info">真的要删掉这个地址吗？</span>
+			<button slot="cancel" @click="removeModel">再想想</button>
+			<button class="btn_comf" slot="comfirm" @click="delAddress()">删吧...</button>
+		</modal>	
+
+		<transition name="slide-fade" v-if="addAdr">
+			<div class="add_modal">
+				<div>
+					<div class="m_address">
+						<p><input type="" name="" id="" value="" placeholder="姓名" v-model="addName" /></p>
+						<p><input type="" name="" id="" value="" placeholder="手机号" v-model.number="addTel"/></p>
+						<p><input type="" name="" id="" value="" placeholder="邮编" v-model.number="addCode"/></p>
+						<p><textarea name="" rows="" cols="" placeholder="地址" v-model="addStreet"></textarea></p>
+					</div>
+					<div class="btn_warp">
+						<div class="btngroup">
+							<button slot="cancel" @click="removeModel()">取消</button>
+							<button class="btn_comf" slot="comfirm" @click="addAddress()">添加</button>					
+						</div>
+					</div>				
+				</div>
+			</div>
+		</transition>			
+	
 		<com-header :rout="rout" :toCart="toCart"></com-header>
 		<div class="cart_title">
 			<img src="../../static/logo.png"/>
@@ -25,11 +51,11 @@
 				<p>{{item.postCode}}</p>
 				<p class="default_adr" v-if="item.isDefault">默认地址</p>
 				<p :class="{'default_setaddr':checkIndex==index}" class="default_setadr" v-show="!item.isDefault" @click="setDefaultAddress(item.addressId)">设置为默认地址</p>
-				<div class="del_adr" @click="delAddress(item.addressId)"><i class="fa fa-trash-o"></i></div>
+				<div class="del_adr" @click="delAddr(item.addressId)"><i class="fa fa-trash-o"></i></div>
 			</div>
 
-			<div class="add_adr">
-				<p>+</p>
+			<div class="add_adr" @click="addAddr()">
+				<p >+</p>
 			</div>
 		</div>
 		<p class="showadr" @click="showAddress">{{showAdr}} <i class="fa fa-chevron-down" v-show="showFlag"></i> <i class="fa fa-chevron-up" v-show="!showFlag"></i></p>
@@ -85,7 +111,13 @@ ds
 				limit:3,
 				showAdr:'更多地址',
 				showFlag:true,
-				checkIndex:0
+				checkIndex:0,
+				delAdr:false,
+				addAdr:false,
+				addName:'',
+				addTel:'',
+				addStreet:'',
+				addCode:''
 			}
 		},
 		mounted (){
@@ -101,7 +133,6 @@ ds
 					this.addressList=res.result.sort(function(a,b){
 						return b.isDefault-a.isDefault;
 					});
-					console.log(this.addressList)
 				})
 			},
 			showAddress(){
@@ -123,12 +154,37 @@ ds
 					}
 				})
 			},
-			delAddress(addressId){
-				axios.post("/users/delAddress",{addressId:addressId}).then((response)=>{
+			delAddr(addressId){
+				this.delAdr=true;
+				this.addressId=addressId;
+			},
+			removeModel(){
+				this.delAdr = false;
+				this.addAdr = false;
+			},
+			delAddress(){
+				axios.post("/users/delAddress",{addressId:this.addressId}).then((response)=>{
 					let res=response.data;
 					if(res.status=='0'){
 						this.init();
+						this.delAdr = false;
 					}
+				})
+			},
+			addAddr(){
+				this.addAdr = true;
+			},
+			addAddress(){
+				let addId=new Date().getTime()
+				axios.post("/users/addAddress",{
+					addId:addId,
+					addName:this.addName,
+					addCode:this.addCode,
+					addTel:this.addTel,
+					addStreet:this.addStreet
+				}).then((response)=>{
+					this.init()
+					this.addAdr = false
 				})
 			}
 		},
@@ -137,7 +193,7 @@ ds
 				return this.addressList.slice(0,this.limit)
 			}
 		}
-	}	
+	}
 </script>
 <style type="text/css">
 	body{
