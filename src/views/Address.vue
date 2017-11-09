@@ -29,22 +29,14 @@
 		<com-header :rout="rout" :toCart="toCart"></com-header>
 		<div class="cart_title">
 			<img src="../../static/logo.png"/>
-			<ul class="order_state">
-				<li class="step_cur">1.确认订单</li><!--
-			 --><div></div><!--
-			 --><li >2.付款</li><!--
-			 --><div></div><!--
-			 --><li>&nbsp;&nbsp;&nbsp;3.确认收货</li><!--
-			 --><div></div><!--
-			 --><li>4.评价</li>
-			</ul>
+			<status :nowpage='nowpage'></status>
 		</div>
 		<div class="adr_title">
 			地址选择
 		</div>
 		<div class="adrSel" >
 			
-			<div v-for="(item,index) in addressListControl" :class="{'active':checkIndex==index}" @click="checkIndex=index;" >
+			<div v-for="(item,index) in addressListControl" :class="{'active':checkIndex==index}" @click="selAddr(index,item.userName,item.tel,item.streetName,item.postCode)" >
 				<span>{{item.userName}}</span> 
 				<span>{{item.tel}}</span>
 				<p class="adr">{{item.streetName}}</p>
@@ -65,30 +57,42 @@
 		<div class="cart_content">
 			<div class="cart_content_header"><div class="cart_img"></div><div class="cart_item">商品信息</div><div class="">单价</div><div class="cart_num">数量</div><div class="">总价</div></div>			
 			<ul>
-				<li>
+				<li v-for="(item,index) in goodsList">
 					<div class="cart_content_body">
 						<div class="cart_f">
-						<img src='../../static/002.png' alt="" />
+						<img :src="'/static/'+item.productImage" alt="" />
 						</div><!--
 					 --><div class="cart_good">
 							<div class="cart_goods">
-								<span class="cart_goods_span">sd</span>
+								<span class="cart_goods_span">{{item.productName}}</span>
 							</div>
 						</div><!--
 					 --><div class="cart_price">
-ds
+					 		{{item.salePrice}}
 						</div><!--
 					 --><div class="couter">
-						
-						1
+							{{item.productNum}}
 						</div><!--
-					 --><div class="cart_total">
-							s
+					 --><div class="cart_total pro_total">
+							{{item.salePrice*1000*item.productNum/1000}}
 						</div>							
 					</div>
 				</li>
-			</ul>	
+			</ul>
+			<div class="orderInfo">
+				<div>
+					<p>收件人:&nbsp;&nbsp;&nbsp;&nbsp;<span>{{userName}}</span></p>
+					<p>寄送至:&nbsp;&nbsp;&nbsp;&nbsp;<span>{{streetName}}</span></p>
+					<p>联系方式:&nbsp;<span>{{tel}}</span></p>
+					<p>邮编:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{postCode}}</span></p>
+					<p>实付款:&nbsp;&nbsp;&nbsp;&nbsp;<span>￥</span><span class="pro_total">{{totalPrice}}</span></p>
+				</div>
+			</div>
+			<div>
+				<input type="submit" name="" id="" value="付款" class="o_pay" />
+			</div>
 		</div>
+		<com-footer></com-footer>
 	</div>	
 </template>
 
@@ -96,12 +100,14 @@ ds
 	import ComHeader from '@/views/ComHeader'	
 	import ComFooter from '@/views/ComFooter'	
 	import Modal from '@/components/Modal'
+	import Status from '@/components/Status'
 	import axios from 'axios'	
 	export default{
 		components:{
 			ComHeader,
 			ComFooter,
-  			Modal
+  			Modal,
+  			Status
 		},
 		data(){
 			return{				
@@ -117,7 +123,14 @@ ds
 				addName:'',
 				addTel:'',
 				addStreet:'',
-				addCode:''
+				addCode:'',
+				nowpage:2,
+				goodsList:[],
+				totalPrice:0,
+				userName:'',
+				tel:0,
+				streetName:'',
+				postCode:0
 			}
 		},
 		mounted (){
@@ -126,6 +139,15 @@ ds
 		methods:{
 			init(){
 				this.getAddressList();
+		  		axios.get('/users/cartList').then((response)=>{
+		  			let res=response.data;
+					res.result.forEach((item)=>{
+						if(item.checked==1){
+							this.goodsList.push(item)
+							this.totalPrice+=item.salePrice*1000*item.productNum/1000
+						}
+					})			  			
+		  		})
 			},
 			getAddressList(){
 				axios.get('/users/addressList').then((res)=>{
@@ -133,6 +155,12 @@ ds
 					this.addressList=res.result.sort(function(a,b){
 						return b.isDefault-a.isDefault;
 					});
+					if(this.addressList[0]){
+						this.userName=this.addressList[0].userName;
+						this.tel=this.addressList[0].tel;
+						this.streetName=this.addressList[0].streetName;
+						this.postCode=this.addressList[0].postCode;											
+					}
 				})
 			},
 			showAddress(){
@@ -150,7 +178,7 @@ ds
 				axios.post("/users/setDefaultAddress",{addressId:addressId}).then((response)=>{
 					let res=response.data;
 					if(res.status=='0'){
-						this.init()
+						this.getAddressList()
 					}
 				})
 			},
@@ -166,7 +194,7 @@ ds
 				axios.post("/users/delAddress",{addressId:this.addressId}).then((response)=>{
 					let res=response.data;
 					if(res.status=='0'){
-						this.init();
+						this.getAddressList()
 						this.delAdr = false;
 					}
 				})
@@ -183,9 +211,16 @@ ds
 					addTel:this.addTel,
 					addStreet:this.addStreet
 				}).then((response)=>{
-					this.init()
+					this.getAddressList()
 					this.addAdr = false
 				})
+			},
+			selAddr(index,userName,tel,streetName,postCode){
+				this.checkIndex=index;
+				this.userName=userName;
+				this.tel=tel;
+				this.streetName=streetName;
+				this.postCode=postCode;
 			}
 		},
 		computed:{

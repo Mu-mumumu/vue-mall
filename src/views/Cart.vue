@@ -10,6 +10,7 @@
 		<div class="cart_title">
 			<img src="../../static/logo.png"/>
 			<p>购物车</p>
+			<status :nowpage='nowpage'></status>
 		</div>
 		<div class="cart_content">
 			<div class="cart_content_header"><div class="cart_img"><div @click="seletAll()"><div :class="{selall:selAll}"></div></div></div><div class="cart_item">商品信息</div><div class="">单价</div><div class="cart_num">数量</div><div class="">总价</div><div>操作</div></div>
@@ -55,12 +56,14 @@
 	import ComHeader from '@/views/ComHeader'	
 	import ComFooter from '@/views/ComFooter'	
 	import Modal from '@/components/Modal'
+	import Status from '@/components/Status'
 	import axios from 'axios'
 	export default{
 		components:{
 			ComHeader,
 			ComFooter,
-  			Modal
+  			Modal,
+  			Status
 		},
 		data () {
 		   	return {
@@ -68,7 +71,8 @@
 		    	cartList:[],
 		    	rout:false,
 		    	delCart:false,
-		    	checkSumit:0
+		    	checkSumit:0,
+				nowpage:1		    	
 		    }
 		 },
 		computed:{
@@ -160,6 +164,19 @@
 		  	},
 		  	cartSumit(){
 		  		if(this.selCount>0){
+//					let orderId=new Date().getTime()
+//					let goodsList=[]
+//					this.cartList.forEach((item)=>{
+//						if(item.checked==1){
+//							goodsList.push(item)
+//						}
+//					})
+//					console.log(goodsList)
+//		  			axios.post('users/addOrder',{
+//		  				goodsList:goodsList,
+//		  				orderId:orderId,
+//		  				orderTotal:this.totalPrice
+//		  			})
 		  			this.$router.push({
 		  				path:'/address'
 		  			})
@@ -168,7 +185,7 @@
 		  	
 		},
 		mounted(){
-			this.init()
+			this.init();
 		}
 		
 	}
